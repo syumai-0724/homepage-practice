@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <!-- スマホの画面幅に合わせます -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>こもれび珈琲</title>
+
+  <!-- CSS：色、文字、配置、スマホ対応を設定します -->
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #faf8f2;
+      color: #303d32;
+      font-family: "Yu Gothic", Meiryo, sans-serif;
+      line-height: 1.9;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .container {
+      width: min(1000px, 90%);
+      margin: auto;
+    }
+
+    header {
+      padding: 20px 0;
+      border-bottom: 1px solid #dcded3;
+    }
+
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    nav a {
+      text-decoration: none;
+    }
+
+    a:focus-visible {
+      outline: 3px solid #a36326;
+      outline-offset: 5px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 40px;
+      padding: 70px 0;
+    }
+
+    h1 {
+      font-size: clamp(30px, 4vw, 44px);
+      line-height: 1.6;
+    }
+
+    h1, h2 {
+      font-family: "Yu Mincho", serif;
+    }
+
+    .eyebrow {
+      font-size: 12px;
+      letter-spacing: 3px;
+      color: #354f3c;
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 12px 24px;
+      background: #354f3c;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+    }
+
+    .button:hover {
+      background: #243c2b;
+    }
+
+    .illustration {
+      display: grid;
+      place-items: center;
+      min-height: 300px;
+      background: #e9e3d3;
+      border-radius: 150px 150px 8px 8px;
+    }
+
+    .illustration span {
+      font-size: 120px;
+    }
+
+    section {
+      padding: 55px 0;
+    }
+
+    h2 {
+      font-size: 28px;
+    }
+
+    .menu-section {
+      background: #efeee6;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .menu-card {
+      padding: 24px;
+      background: #faf8f2;
+      border: 1px solid #dcded3;
+    }
+
+    .price {
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .shop-info {
+      padding: 24px;
+      border: 1px solid #dcded3;
+    }
+
+    dt {
+      font-weight: bold;
+      margin-top: 16px;
+    }
+
+    dd {
+      margin: 0;
+    }
+
+    .note {
+      font-size: 13px;
+      color: #60685c;
+    }
+
+    footer {
+      padding: 25px;
+      background: #354f3c;
+      color: white;
+      text-align: center;
+    }
+
+    /* 画面幅が768px以下のときは縦に並べます */
+    @media (max-width: 768px) {
+      .header-inner {
+        flex-direction: column;
+      }
+
+      nav {
+        justify-content: center;
+        gap: 16px;
+        font-size: 14px;
+      }
+
+      .hero,
+      .menu-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 40px 0;
+      }
+
+      .illustration {
+        min-height: 240px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- HTML：ホームページの文章と構造を書きます -->
+  <header>
+    <div class="container header-inner">
+      <a class="logo" href="#">こもれび珈琲</a>
+      <nav aria-label="ページ内の案内">
+        <a href="#about">お店について</a>
+        <a href="#menu">メニュー</a>
+        <a href="#access">店舗情報</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container hero">
+      <div>
+        <p class="eyebrow">KOMOREBI COFFEE</p>
+        <h1>日々のあいだに、<br>やさしいひと息。</h1>
+        <p>
+          一杯ずつ淹れるコーヒーと、手づくりのおやつ。<br>
+          ゆっくり、あなたのペースでお過ごしください。
+        </p>
+        <a class="button" href="#menu">メニューを見る</a>
+      </div>
+        <div class="illustration" style="overflow: hidden;">
+  <img src="cafe.jpg"
+       alt="窓から光が差し込む、植物と木のテーブルがあるカフェ"
+       style="display: block; width: 100%; height: 320px; object-fit: cover;">
+</div>
+    </div>
+
+    <section id="about" class="container">
+      <p class="eyebrow">OUR STORY</p>
+      <h2>いつもの街に、小さなよりみち。</h2>
+      <p>
+        こもれび珈琲は、本を読んだり、友人と話したり、
+        思い思いの時間を過ごせる小さなカフェです。
+      </p>
+      <p>
+        香り豊かなハンドドリップコーヒーと、
+        素朴な手づくりのおやつをご用意しています。
+      </p>
+    </section>
+
+    <section id="menu" class="menu-section">
+      <div class="container">
+        <p class="eyebrow">OUR MENU</p>
+        <h2>今日のおともに。</h2>
+        <p>価格はすべて税込です。</p>
+
+        <div class="menu-grid">
+          <article class="menu-card">
+            <h3>こもれびブレンド</h3>
+            <p>香ばしさとやさしい甘みが楽しめる、定番の一杯。</p>
+            <p class="price">¥480</p>
+          </article>
+
+          <article class="menu-card">
+            <h3>カフェラテ</h3>
+            <p>深い味わいのコーヒーに、まろやかなミルクを。</p>
+            <p class="price">¥550</p>
+          </article>
+
+          <article class="menu-card">
+            <h3>チーズケーキ</h3>
+            <p>しっとり濃厚な手づくりケーキ。コーヒーと一緒に。</p>
+            <p class="price">¥520</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="access" class="container">
+      <p class="eyebrow">VISIT US</p>
+      <h2>店舗情報</h2>
+
+      <div class="shop-info">
+        <h3>こもれび珈琲</h3>
+        <dl>
+          <dt>営業時間</dt>
+          <dd>10:00〜18:00（ラストオーダー17:30）</dd>
+
+          <dt>定休日</dt>
+          <dd>毎週水曜日</dd>
+
+          <dt>住所</dt>
+        <dd>〒386-1212 長野県上田市富士山3313−24</dd>
+        </dl><!-- 指定した住所の地図 -->
+<iframe
+  title="長野県上田市富士山3313−24の地図"
+  src="https://www.google.com/maps?q=長野県上田市富士山3313-24&amp;output=embed"
+  width="600"
+  height="300"
+  style="display: block; width: 100%; border: 0; border-radius: 8px;"
+  loading="lazy">
+</iframe>
+
+<a class="button"
+   href="https://www.google.com/maps/search/?api=1&amp;query=長野県上田市富士山3313-24"
+   target="_blank"
+   rel="noopener noreferrer">
+  Googleマップで地図を開く ↗
+</a>
+        <p class="note">
+          学習用のサンプルです。店名・商品情報は架空です
+        </p>
+      </div>
+    </section>
+<section id="social" class="container">
+  <p class="eyebrow">FOLLOW US</p>
+  <h2>お店の最新情報</h2>
+  <p>季節のおやつや、お店の日々の様子をお届けします。</p>
+
+  <div style="display: flex; flex-wrap: wrap; gap: 16px;">
+    <!-- プロフィールURLが決まったらリンクに変更します -->
+    <span style="padding: 16px 24px; border: 1px solid #dcded3;">
+      X：準備中
+    </span>
+    <span style="padding: 16px 24px; border: 1px solid #dcded3;">
+      Instagram：準備中
+    </span>
+  </div>
+</section>
+  </main>
+
+  <footer>
+    <small>© 2026 こもれび珈琲 · 学習用サンプル</small>
+  </footer>
+</body>
+</html>
