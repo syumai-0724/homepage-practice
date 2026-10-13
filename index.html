@@ -415,6 +415,21 @@
       .takeout-section { flex-direction: column; align-items: flex-start; padding: 24px; }
       .takeout-section h2 { font-size: 24px; }
     }
+
+    /* テイクアウト案内にカップとクッキーの画像を追加 */
+    .takeout-section { flex-wrap: wrap; }
+    .takeout-section > div:first-child { flex: 1 1 280px; }
+    .takeout-art { display: flex; align-items: center; gap: 12px; }
+    .takeout-art img {
+      display: block; width: 120px; height: 150px;
+      object-fit: contain; padding: 10px; background: #ffffff;
+      border-radius: 12px;
+    }
+    @media (max-width: 768px) {
+      .takeout-section > div:first-child { flex: auto; }
+      .takeout-art { width: 100%; justify-content: center; }
+      .takeout-art img { width: min(42%, 150px); height: 160px; }
+    }
   </style>
 </head>
 
@@ -453,6 +468,10 @@
         <p class="eyebrow">TAKEOUT AVAILABLE</p>
         <h2 id="takeout-title">お店の味を、お持ち帰りでも。</h2>
         <p>テイクアウトもご利用いただけます。<br>お気軽にスタッフへお声がけください。</p>
+      </div>
+      <div class="takeout-art" aria-label="テイクアウトのイメージ">
+        <img src="コーヒーテイクアウト.png" alt="ふた付きのテイクアウト用コーヒーカップのイラスト" width="940" height="940" loading="lazy">
+        <img src="たべもの１.jpg" alt="いろいろな形のクッキーのイラスト" width="474" height="474" loading="lazy">
       </div>
       <a class="button" href="#menu">メニューを見る ↗</a>
     </section>
