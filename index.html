@@ -278,6 +278,124 @@
       background: #fff7eb;
       border-radius: 12px;
     }
+
+    /* トップは店内写真を大きく見せ、文字の後ろだけ暗くします。 */
+    .hero {
+      position: relative;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      min-height: clamp(560px, 72vh, 760px);
+      margin: 0;
+      padding: 0;
+      background: #faf6ef;
+      border-radius: 0;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .hero-cover {
+      position: absolute;
+      inset: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 55%;
+      z-index: -2;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(18, 26, 22, .86) 0%, rgba(18, 26, 22, .62) 45%, rgba(18, 26, 22, .08) 100%);
+      z-index: -1;
+    }
+
+    .hero-content {
+      padding-block: 80px;
+      color: #ffffff;
+    }
+
+    .hero .eyebrow {
+      color: #ffffff;
+      letter-spacing: .25em;
+    }
+
+    .hero h1 {
+      font-size: clamp(36px, 4.5vw, 58px);
+      font-weight: 500;
+      letter-spacing: .04em;
+      line-height: 1.6;
+    }
+
+    .hero-description {
+      margin-block: 28px;
+      line-height: 2;
+    }
+
+    .hero .hero-button {
+      padding: 12px 26px;
+      background: transparent;
+      color: #ffffff;
+      border: 1px solid #ffffff;
+      border-radius: 4px;
+    }
+
+    .hero-button span {
+      margin-left: 28px;
+    }
+
+    .hero .hero-button:hover {
+      background: #ffffff;
+      color: #203c31;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        display: block;
+        min-height: 0;
+        padding: 0;
+      }
+
+      .hero-cover {
+        position: static;
+        height: clamp(240px, 65vw, 420px);
+        object-position: center;
+      }
+
+      .hero::before {
+        display: none;
+      }
+
+      .hero-content {
+        padding-block: 32px 40px;
+        color: #203c31;
+      }
+
+      .hero .eyebrow {
+        color: #426452;
+      }
+
+      .hero h1 {
+        font-size: clamp(28px, 7vw, 40px);
+      }
+
+      .hero-description {
+        font-size: 14px;
+      }
+
+      .hero .hero-button {
+        color: #203c31;
+        border-color: #203c31;
+      }
+
+      .hero .hero-button:hover {
+        background: #203c31;
+        color: #ffffff;
+      }
+    }
   </style>
 </head>
 
@@ -295,22 +413,20 @@
   </header>
 
   <main>
-    <div class="container hero">
-      <div>
+    <section class="hero" aria-labelledby="hero-title">
+      <img class="hero-cover" src="cafe.jpg"
+           alt="窓から光が差し込む、植物と木のテーブルがあるカフェの店内"
+           width="2048" height="1365" fetchpriority="high">
+      <div class="container hero-content">
         <p class="eyebrow">KOMOREBI COFFEE</p>
-        <h1>日々のあいだに、<br>やさしいひと息。</h1>
-        <p>
+        <h1 id="hero-title">日々のあいだに、<br>やさしいひと息。</h1>
+        <p class="hero-description">
           一杯ずつ淹れるコーヒーと、手づくりのおやつ。<br>
           ゆっくり、あなたのペースでお過ごしください。
         </p>
-        <a class="button" href="#menu">メニューを見る</a>
+        <a class="button hero-button" href="#menu">メニューを見る <span aria-hidden="true">↗</span></a>
       </div>
-        <div class="illustration" style="overflow: hidden;">
-  <img src="cafe.jpg"
-       alt="窓から光が差し込む、植物と木のテーブルがあるカフェ"
-       style="display: block; width: 100%; height: 320px; object-fit: cover;">
-</div>
-    </div>
+    </section>
 
     <section id="about" class="container">
       <p class="eyebrow">OUR STORY</p>
