@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="こもれび珈琲のメニュー。コーヒーや手づくりのおやつの商品・税込価格をご紹介します。">
+  <title>メニュー | こもれび珈琲</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #faf6ef; color: #203c31; font-family: "Yu Gothic", Meiryo, sans-serif; line-height: 1.9; }
+    a { color: inherit; }
+    a:focus-visible { outline: 3px solid #b93827; outline-offset: 5px; }
+    .container { width: min(1000px, 90%); margin-inline: auto; }
+    header { background: #007e87; color: white; border-bottom: 4px solid #ffcf62; }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-block: 20px; flex-wrap: wrap; }
+    .logo { font-size: 24px; font-weight: bold; text-decoration: none; }
+    nav { display: flex; gap: 20px; flex-wrap: wrap; }
+    nav a { text-decoration: none; }
+    nav a[aria-current] { text-decoration: underline; text-underline-offset: 6px; }
+    .breadcrumb { margin-top: 24px; font-size: 13px; }
+    .intro { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: center; padding-block: 48px 60px; }
+    .eyebrow { letter-spacing: .2em; font-size: 12px; color: #007e87; font-weight: bold; }
+    h1, h2 { font-family: "Yu Mincho", serif; line-height: 1.6; }
+    h1 { font-size: clamp(30px, 4vw, 46px); font-weight: 500; }
+    h2 { font-size: 28px; }
+    .art { display: flex; align-items: center; justify-content: center; gap: 16px; background: #fff4db; padding: 28px; border-radius: 20px; }
+    .art img { width: 46%; height: 230px; object-fit: contain; }
+    .button { display: inline-block; background: #007e87; color: white; padding: 12px 24px; border-radius: 4px; text-decoration: none; margin-top: 12px; }
+    .button:hover { background: #005b64; }
+    .order { background: white; border: 1px solid #dce3d7; border-radius: 16px; padding: 32px; margin-bottom: 48px; }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); list-style: none; padding: 0; gap: 24px; }
+    .steps li { padding: 20px; background: #faf6ef; border-radius: 8px; }
+    .step-number { color: #007e87; font-size: 24px; font-weight: bold; }
+    .steps h3 { margin-block: 8px; }
+    .shop { padding-bottom: 56px; }
+    dl > div { display: grid; grid-template-columns: 100px 1fr; gap: 16px; padding-block: 14px; border-bottom: 1px solid #dce3d7; }
+    dt { font-weight: bold; } dd { margin: 0; }
+    .note { font-size: 13px; color: #526454; }
+    footer { padding: 24px; background: #007e87; color: white; text-align: center; font-size: 12px; }
+    @media(max-width:768px) {
+      .header-inner { flex-direction: column; }
+      nav { justify-content: center; gap: 16px; font-size: 14px; }
+      .intro, .steps { grid-template-columns: 1fr; gap: 24px; }
+      .intro { padding-block: 28px 40px; }
+      .art { padding: 20px; }
+      .art img { height: 180px; }
+      .order { padding: 24px; }
+      dl > div { grid-template-columns: 80px 1fr; gap: 8px; }
+    }
+
+    /* 画像を使わず、商品名と価格がすぐに分かるメニュー */
+    .menu-intro { padding-block: 28px 36px; }
+    .menu-intro h1 { margin-block: 12px 20px; }
+    .menu-category { padding: 32px; margin-bottom: 28px; background: #ffffff; border: 1px solid #dce3d7; border-radius: 16px; }
+    .menu-category h2 { margin: 0 0 12px; }
+    .menu-item { display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: start; padding: 24px 0; border-bottom: 1px solid #e3e7de; }
+    .menu-item:last-child { border-bottom: 0; padding-bottom: 0; }
+    .menu-item h3 { margin: 0 0 8px; font-size: 19px; }
+    .menu-item p { margin: 0; font-size: 14px; color: #526454; }
+    .menu-item .menu-price { color: #005b64; font-size: 22px; font-weight: bold; white-space: nowrap; }
+    .menu-end { padding-block: 8px 48px; }
+    @media (max-width: 768px) {
+      .menu-category { padding: 24px 20px; }
+      .menu-item { gap: 12px; }
+      .menu-item h3 { font-size: 17px; }
+      .menu-item .menu-price { font-size: 19px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container header-inner">
+      <a class="logo" href="index.html">こもれび珈琲</a>
+      <nav aria-label="ページの案内">
+        <a href="index.html">ホーム</a>
+        <a href="menu.html" aria-current="page">メニュー</a>
+        <a href="takeout.html">テイクアウト</a>
+      </nav>
+    </div>
+  </header>
+  <main class="container">
+    <p class="breadcrumb"><a href="index.html">ホーム</a> ／ メニュー</p>
+    <section class="menu-intro" aria-labelledby="menu-title">
+      <p class="eyebrow">OUR MENU</p>
+      <h1 id="menu-title">今日のおともに。</h1>
+      <p>一杯のコーヒーと、おいしいひと皿。<br>ゆっくり選んで、お楽しみください。</p>
+      <p class="note">価格はすべて税込です。</p>
+    </section>
+    <section class="menu-category" aria-labelledby="drink-title">
+      <p class="eyebrow">DRINKS</p>
+      <h2 id="drink-title">お飲み物</h2>
+        <article class="menu-item">
+          <div><h3>こもれびブレンド</h3><p>香ばしさとやさしい甘みが楽しめる、定番の一杯。</p></div>
+          <p class="menu-price">¥480</p>
+        </article>
+        <article class="menu-item">
+          <div><h3>カフェラテ</h3><p>深い味わいのコーヒーに、まろやかなミルクを。</p></div>
+          <p class="menu-price">¥550</p>
+        </article>
+        <article class="menu-item">
+          <div><h3>アイスコーヒー</h3><p>すっきりとした味わいの、冷たいコーヒー。</p></div>
+          <p class="menu-price">¥650</p>
+        </article>
+        <article class="menu-item">
+          <div><h3>カフェモカ</h3><p>コーヒーとチョコレートの甘さを楽しむ一杯。</p></div>
+          <p class="menu-price">¥800</p>
+        </article>
+    </section>
+    <section class="menu-category" aria-labelledby="sweet-title">
+      <p class="eyebrow">SWEETS</p>
+      <h2 id="sweet-title">おやつ</h2>
+        <article class="menu-item">
+          <div><h3>チーズケーキ</h3><p>しっとり濃厚な手づくりケーキ。コーヒーと一緒に。</p></div>
+          <p class="menu-price">¥520</p>
+        </article>
+    </section>
+    <div class="menu-end">
+      <p>テイクアウトもご利用いただけます。</p>
+      <a class="button" href="takeout.html">テイクアウトのご案内 ↗</a>
+      <p class="note">学習用のサンプルです。店名・商品情報は架空です。</p>
+    </div>
+  </main>
+  <footer>© 2026 こもれび珈琲 · 学習用サンプル</footer>
+</body>
+</html>
