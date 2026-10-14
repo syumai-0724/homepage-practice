@@ -434,6 +434,23 @@
     .takeout-image-link { position: relative; padding-bottom: 30px; text-decoration: none; }
     .takeout-link-caption { position: absolute; bottom: 0; left: 0; width: 100%; text-align: center; color: #005b64; font-size: 12px; }
     .takeout-image-link:hover img { outline: 2px solid #007e87; }
+
+    /* 袋の画像全体を、専用ページへのリンクにします。 */
+    .takeout-bag-link { flex-direction: column; padding: 12px 20px 32px; }
+    .takeout-bag-link img {
+      width: 180px; height: 180px; padding: 12px;
+      object-fit: contain; background: #ffffff;
+      transition: transform .2s ease;
+    }
+    .takeout-bag-link:hover img { transform: translateY(-4px); }
+    @media (max-width: 768px) {
+      .takeout-bag-link { width: auto; align-self: center; }
+      .takeout-bag-link img { width: 180px; height: 180px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .takeout-bag-link img { transition: none; }
+      .takeout-bag-link:hover img { transform: none; }
+    }
   </style>
 </head>
 
@@ -473,10 +490,10 @@
         <h2 id="takeout-title">お店の味を、お持ち帰りでも。</h2>
         <p>テイクアウトもご利用いただけます。<br>お気軽にスタッフへお声がけください。</p>
       </div>
-      <a class="takeout-art takeout-image-link" href="takeout.html" aria-label="画像をクリックしてテイクアウトページを見る">
-        <img src="コーヒーテイクアウト.png" alt="ふた付きのテイクアウト用コーヒーカップのイラスト" width="940" height="940" loading="lazy">
-        <img src="たべもの１.jpg" alt="いろいろな形のクッキーのイラスト" width="474" height="474" loading="lazy">
-      <span class="takeout-link-caption">画像をクリックして詳しく見る ↗</span></a>
+      <a class="takeout-art takeout-image-link takeout-bag-link" href="takeout.html" aria-label="テイクアウト専用ページを見る">
+        <img src="takeout-bag.png" alt="TAKE OUTと書かれた袋。クリックするとテイクアウトの案内ページが開きます。" width="768" height="768" loading="lazy">
+        <span class="takeout-link-caption">テイクアウトのご案内 ↗</span>
+      </a>
       <a class="button" href="takeout.html">テイクアウトページを見る ↗</a>
     </section>
 
