@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="こもれび珈琲のテイクアウト案内。お店の味を、お持ち帰りでも。">
+  <title>テイクアウト | こもれび珈琲</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #faf6ef; color: #203c31; font-family: "Yu Gothic", Meiryo, sans-serif; line-height: 1.9; }
+    a { color: inherit; }
+    a:focus-visible { outline: 3px solid #b93827; outline-offset: 5px; }
+    .container { width: min(1000px, 90%); margin-inline: auto; }
+    header { background: #007e87; color: white; border-bottom: 4px solid #ffcf62; }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-block: 20px; flex-wrap: wrap; }
+    .logo { font-size: 24px; font-weight: bold; text-decoration: none; }
+    nav { display: flex; gap: 20px; flex-wrap: wrap; }
+    nav a { text-decoration: none; }
+    nav a[aria-current] { text-decoration: underline; text-underline-offset: 6px; }
+    .breadcrumb { margin-top: 24px; font-size: 13px; }
+    .intro { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: center; padding-block: 48px 60px; }
+    .eyebrow { letter-spacing: .2em; font-size: 12px; color: #007e87; font-weight: bold; }
+    h1, h2 { font-family: "Yu Mincho", serif; line-height: 1.6; }
+    h1 { font-size: clamp(30px, 4vw, 46px); font-weight: 500; }
+    h2 { font-size: 28px; }
+    .art { display: flex; align-items: center; justify-content: center; gap: 16px; background: #fff4db; padding: 28px; border-radius: 20px; }
+    .art img { width: 46%; height: 230px; object-fit: contain; }
+    .button { display: inline-block; background: #007e87; color: white; padding: 12px 24px; border-radius: 4px; text-decoration: none; margin-top: 12px; }
+    .button:hover { background: #005b64; }
+    .order { background: white; border: 1px solid #dce3d7; border-radius: 16px; padding: 32px; margin-bottom: 48px; }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); list-style: none; padding: 0; gap: 24px; }
+    .steps li { padding: 20px; background: #faf6ef; border-radius: 8px; }
+    .step-number { color: #007e87; font-size: 24px; font-weight: bold; }
+    .steps h3 { margin-block: 8px; }
+    .shop { padding-bottom: 56px; }
+    dl > div { display: grid; grid-template-columns: 100px 1fr; gap: 16px; padding-block: 14px; border-bottom: 1px solid #dce3d7; }
+    dt { font-weight: bold; } dd { margin: 0; }
+    .note { font-size: 13px; color: #526454; }
+    footer { padding: 24px; background: #007e87; color: white; text-align: center; font-size: 12px; }
+    @media(max-width:768px) {
+      .header-inner { flex-direction: column; }
+      nav { justify-content: center; gap: 16px; font-size: 14px; }
+      .intro, .steps { grid-template-columns: 1fr; gap: 24px; }
+      .intro { padding-block: 28px 40px; }
+      .art { padding: 20px; }
+      .art img { height: 180px; }
+      .order { padding: 24px; }
+      dl > div { grid-template-columns: 80px 1fr; gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container header-inner">
+      <a class="logo" href="index.html">こもれび珈琲</a>
+      <nav aria-label="ページの案内">
+        <a href="index.html">ホーム</a>
+        <a href="index.html#menu">メニュー</a>
+        <a href="takeout.html" aria-current="page">テイクアウト</a>
+      </nav>
+    </div>
+  </header>
+  <main class="container">
+    <p class="breadcrumb"><a href="index.html">ホーム</a> ／ テイクアウト</p>
+    <section class="intro" aria-labelledby="takeout-title">
+      <div>
+        <p class="eyebrow">TAKEOUT</p>
+        <h1 id="takeout-title">お店の味を、<br>お持ち帰りでも。</h1>
+        <p>お散歩のおともに、おうちでのひと息に。<br>こもれび珈琲ではテイクアウトもご利用いただけます。</p>
+        <a class="button" href="index.html#menu">メニューと価格を見る ↗</a>
+      </div>
+      <div class="art">
+        <img src="コーヒーテイクアウト.png" alt="テイクアウト用のコーヒーカップのイラスト" width="940" height="940">
+        <img src="たべもの１.jpg" alt="クッキーのイラスト" width="474" height="474">
+      </div>
+    </section>
+    <section class="order" aria-labelledby="order-title">
+      <p class="eyebrow">HOW TO ORDER</p>
+      <h2 id="order-title">ご注文は店頭で。</h2>
+      <ol class="steps">
+        <li><span class="step-number">01</span><h3>商品を選ぶ</h3><p>メニューから気になる商品をお選びください。</p></li>
+        <li><span class="step-number">02</span><h3>スタッフに伝える</h3><p>ご注文の際に「テイクアウトで」とお声がけください。</p></li>
+        <li><span class="step-number">03</span><h3>商品を受け取る</h3><p>準備ができましたら、店頭でお渡しします。</p></li>
+      </ol>
+      <p class="note">お持ち帰りできる商品については、スタッフにご確認ください。</p>
+    </section>
+    <section class="shop" aria-labelledby="shop-title">
+      <p class="eyebrow">VISIT US</p>
+      <h2 id="shop-title">店舗情報</h2>
+      <dl>
+        <div><dt>営業時間</dt><dd>10:00〜18:00（ラストオーダー17:30）</dd></div>
+        <div><dt>定休日</dt><dd>毎週水曜日</dd></div>
+        <div><dt>住所</dt><dd>〒386-1212 長野県上田市富士山3313−24</dd></div>
+      </dl>
+      <a href="index.html#access">地図と店舗情報を見る ↗</a>
+      <p class="note">学習用のサンプルです。店名・商品情報は架空です。</p>
+    </section>
+  </main>
+  <footer>© 2026 こもれび珈琲 · 学習用サンプル</footer>
+</body>
+</html>
