@@ -1,0 +1,45 @@
+/* 予約ページ専用の配置と状態表示です。 */
+.booking-main { max-width: 1040px; padding-block: 52px 64px; }
+.booking-main > h1 { font-size: clamp(24px, 3.5vw, 36px); }
+.booking-intro { color: var(--muted); margin-block: 16px 24px; font-size: 14px; }
+.demo-notice { padding: 20px 24px; background: #eee6db; border-left: 4px solid var(--accent); border-radius: 4px; font-size: 13px; margin-bottom: 32px; }
+.demo-notice p { margin: 8px 0 0; }
+.booking-panel { min-width: 0; margin: 0 0 32px; padding: 28px; border: 1px solid var(--line); border-radius: 12px; background: #fffdf9; }
+legend { padding-inline: 8px; font-size: 18px; font-weight: bold; }
+legend > span { color: var(--accent); font: 24px Georgia, serif; margin-right: 12px; }
+.field-help, .slot-key { color: var(--muted); font-size: 12px; margin-block: 0 20px; }
+.staff-options { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.staff-choice { display: block; cursor: pointer; }
+.staff-choice input { margin: 0 0 8px; accent-color: var(--accent); }
+.staff-card { display: flex; flex-direction: column; padding: 16px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); }
+.staff-choice input:checked + .staff-card { border: 2px solid var(--accent); padding: 15px; background: #f0e2e4; }
+.staff-card strong { font: 24px Georgia, serif; }
+.staff-card span { font-size: 11px; margin-block: 6px; }
+.staff-card small { color: var(--muted); font-size: 10px; }
+.field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+label { display: block; font-size: 13px; font-weight: bold; margin-bottom: 8px; }
+select, input[type=date], input[type=text] { width: 100%; min-width: 0; padding: 12px; color: var(--ink); background: white; border: 1px solid #aa969a; border-radius: 4px; font: inherit; font-size: 14px; }
+input[type=text] { max-width: 420px; margin-bottom: 12px; }
+input:focus-visible, select:focus-visible, button:focus-visible { outline: 3px solid #90585c; outline-offset: 3px; }
+.slots { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; margin-bottom: 16px; }
+.slot { padding: 12px 8px; border: 1px solid #aa969a; border-radius: 6px; background: white; color: var(--ink); font: inherit; font-size: 15px; cursor: pointer; }
+.slot small { display: block; font-size: 10px; }
+.slot[aria-pressed=true] { border: 2px solid var(--accent); padding: 11px 7px; background: #ead7d7; }
+.slot:disabled { cursor: not-allowed; color: #6f6b67; background: #efede8; border-color: #d1ccc5; }
+.booking-summary { margin-block: 24px 8px; }
+.booking-summary > div { display: grid; grid-template-columns: 110px 1fr; gap: 16px; border-bottom: 1px solid var(--line); padding-block: 12px; }
+.booking-summary dd { font: 14px/1.9 sans-serif; white-space: normal; }
+.price-total { margin-top: 20px; font-size: 14px; }
+.price-total strong { margin-inline: 16px; font: 36px Georgia, serif; }
+.price-total > span { font-size: 10px; color: var(--muted); }
+button.button { border: 0; font-family: inherit; cursor: pointer; font-size: 14px; }
+button.button:disabled { background: #d4c8c8; color: #51474a; cursor: not-allowed; }
+.booking-message { padding: 16px 20px; border-radius: 6px; background: #e5ebe1; }
+.booking-message:empty { display: none; }
+.booking-message.error { background: #f4dfe0; }
+.saved-panel h2 { font-size: 24px; }
+.saved-bookings { list-style: none; padding: 0; margin-bottom: 0; }
+.saved-bookings li { display: flex; align-items: center; justify-content: space-between; gap: 16px; border-top: 1px solid var(--line); padding-block: 20px; font-size: 13px; }
+.saved-bookings p { margin: 4px 0; }
+.cancel { padding: 8px 12px; border: 1px solid var(--accent); border-radius: 4px; background: white; color: var(--accent); cursor: pointer; white-space: nowrap; font-family: inherit; }
+@media(max-width: 680px) { .booking-main { padding-top: 32px; } .booking-panel { padding: 20px; } .staff-options { grid-template-columns: repeat(2, 1fr); } .field-grid { grid-template-columns: 1fr; gap: 16px; } .slots { grid-template-columns: repeat(3, 1fr); } .booking-summary > div { grid-template-columns: 80px 1fr; gap: 12px; } .saved-bookings li { align-items: flex-start; flex-direction: column; } }
