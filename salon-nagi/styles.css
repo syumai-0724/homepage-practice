@@ -1,0 +1,33 @@
+/* ヘアスタイル集。画像・説明・予約リンクをまとめて配置します。 */
+.gallery-main { padding-bottom: 64px; }
+.gallery-breadcrumb { font-size: 11px; color: var(--muted); margin-top: 24px; }
+.gallery-intro { padding-block: 40px 24px; }
+.gallery-intro h1 { font-size: clamp(27px, 4vw, 42px); margin-bottom: 24px; }
+.gallery-intro > p:last-child { font-size: 14px; color: var(--muted); }
+.gallery-notice { padding: 16px 20px; background: #eee6db; border-left: 3px solid var(--accent); font-size: 11px; margin-bottom: 28px; }
+.style-filters { display: flex; flex-wrap: wrap; gap: 10px; margin-block: 24px; }
+.style-filters button { color: var(--ink); background: transparent; border: 1px solid #aa969a; border-radius: 24px; padding: 10px 18px; font: inherit; font-size: 12px; cursor: pointer; }
+.style-filters button[aria-pressed=true] { background: var(--accent); border-color: var(--accent); color: var(--paper); }
+.style-filters button:hover { border-color: var(--accent); }
+.style-filters button:focus-visible { outline: 3px solid #90585c; outline-offset: 3px; }
+.style-count { color: var(--muted); font-size: 11px; margin-bottom: 20px; }
+.style-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px 24px; }
+.style-card { border: 1px solid var(--line); border-radius: 6px; overflow: hidden; background: #fffdf9; }
+.style-card[hidden] { display: none; }
+.style-card > img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; }
+.style-card-body { padding: 24px; }
+.style-category { font-size: 9px; letter-spacing: .08em; color: var(--muted); margin-bottom: 8px; }
+.style-card h2, .style-card h3 { font-family: inherit; font-size: 18px; font-weight: bold; margin-bottom: 12px; letter-spacing: 0; }
+.style-description { font-size: 12px; color: var(--muted); }
+.style-detail { border-top: 1px solid var(--line); margin-block: 18px; }
+.style-detail summary { font-size: 11px; padding-block: 12px; }
+.style-detail p { font-size: 11px; color: var(--muted); }
+.style-booking { display: inline-block; margin-top: 12px; }
+.gallery-cta { padding: 40px; margin-top: 56px; text-align: center; background: #eee5e4; border-radius: 8px; }
+.gallery-cta h2 { font-size: 27px; margin-bottom: 16px; }
+.gallery-cta > p { font-size: 13px; }
+.gallery-cta .small-note { font-size: 10px; }
+.gallery-bottom { margin-top: 32px; text-align: center; }
+.gallery-note { margin: -12px 0 28px; }
+@media(max-width: 960px) { .style-grid { grid-template-columns: repeat(2, 1fr); } nav { flex-wrap: wrap; gap: 8px 16px; } }
+@media(max-width: 680px) { .style-grid { grid-template-columns: 1fr; gap: 24px; } .gallery-intro { padding-top: 24px; } .style-filters { gap: 8px; } .style-filters button { padding: 8px 14px; font-size: 11px; } .gallery-cta { padding: 28px 20px; } .gallery-cta h2 { font-size: 23px; } }
