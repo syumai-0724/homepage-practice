@@ -1,2 +1,2 @@
-import Home from '@/components/home';
-export default function Page() { return <Home/>; }
+import SiteHome from '@/components/site-home';
+export default function Page(){return <SiteHome/>;}

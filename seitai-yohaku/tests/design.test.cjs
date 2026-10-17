@@ -1,0 +1,27 @@
+const fs=require('node:fs'),assert=require('node:assert/strict'),path=require('node:path'),Module=require('node:module'),esbuild=require('esbuild');
+const root=path.resolve(__dirname,'..');
+(async()=>{
+ const built=await esbuild.build({stdin:{contents:"export * from './lib/design-model';export * from './lib/design-store';export * from './lib/design-images';export * from './lib/design-supabase';",resolveDir:root,loader:'ts'},absWorkingDir:root,bundle:true,platform:'node',format:'cjs',write:false});const m=new Module(__filename,module);m.filename=__filename;m.paths=Module._nodeModulePaths(root);m._compile(built.outputFiles[0].text,__filename);const D=m.exports;
+ assert(D.parseDesign(D.defaultDesign));assert.equal(D.contrast('#FFFFFF','#000000'),21);assert.equal(D.contrast('#FFFFFF','#FFFFFF'),1);
+ for(const mutation of [d=>d.theme.background='red;url(x)',d=>d.theme.font='url(x)',d=>d.layout.template='raw-html',d=>d.hero.image={kind:'inline',data:'data:image/svg+xml;base64,PHN2Zz4='},d=>d.hero.image={kind:'stored',path:'../../secret'},d=>d.sections[1].id='news',d=>d.extra='x',d=>d.hero.headline='',d=>d.theme.font=null]){const d=D.copyDesign(D.defaultDesign);mutation(d);assert.equal(D.parseDesign(d),null);}
+ const malicious=D.copyDesign(D.defaultDesign);malicious.hero.headline='<img src=x onerror="alert(1)">';assert(D.parseDesign(malicious)); // テキストとして描画。HTML化しない。
+ const bad=D.copyDesign(D.defaultDesign);bad.theme.text=bad.theme.background;assert(D.designErrors(bad).length);
+ const data=new Map(),storage={getItem:k=>data.get(k)||null,setItem:(k,v)=>data.set(k,v)};
+ const a=D.createDemoDesignStore('yohaku-demo',storage),b=D.createDemoDesignStore('kigi-demo',storage);let state=await a.load();const changed=D.copyDesign(state.draft);changed.hero.headline='テストの余白';state=await a.save(changed,0);assert.equal(state.published.hero.headline,D.defaultDesign.hero.headline);assert.equal((await b.load()).draft.hero.headline,D.defaultDesign.hero.headline);
+ await assert.rejects(()=>a.save(changed,0));state=await a.publish(state.revision);assert.equal(state.published.hero.headline,'テストの余白');state=await a.save(D.defaultDesign,state.revision,'restore');assert.equal(state.published.hero.headline,'テストの余白');assert.equal(state.draft.hero.headline,D.defaultDesign.hero.headline);
+ await assert.rejects(()=>a.save(bad,state.revision));for(let i=0;i<12;i++)state=await a.save(D.defaultDesign,state.revision);assert.equal(state.history.length,10);
+ const full=D.createDemoDesignStore('yohaku-demo',{getItem:storage.getItem,setItem:()=>{throw Error('quota');}});await assert.rejects(()=>full.save(changed,state.revision));assert.equal((await a.load()).revision,state.revision);
+ const outcomes=await Promise.allSettled([a.save(changed,state.revision),a.save(changed,state.revision)]);assert.equal(outcomes.filter(x=>x.status==='fulfilled').length,1);
+ assert.throws(()=>D.createDemoDesignStore('other-tenant',storage));
+ const png=Uint8Array.from([137,80,78,71,13,10,26,10,0,0,0,0]);assert.doesNotThrow(()=>D.checkImageFile({size:12,type:'image/png',name:'valid.png'},png));
+ for(const file of [{size:4*1024*1024,type:'image/png',name:'big.png'},{size:12,type:'image/svg+xml',name:'x.svg'},{size:12,type:'image/jpeg',name:'x.jpg'},{size:12,type:'image/png',name:'x.html'}])assert.throws(()=>D.checkImageFile(file,png));
+ const vars=D.designVariables(D.defaultDesign);assert(D.contrast(vars['--muted'],vars['--surface'])>=4.5);assert(D.contrast(vars['--on-main'],vars['--main'])>=4.5);
+ const originalUrl=process.env.NEXT_PUBLIC_SUPABASE_URL,originalKey=process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;delete process.env.NEXT_PUBLIC_SUPABASE_URL;delete process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;assert.equal(D.designConnection().kind,'demo');process.env.NEXT_PUBLIC_SUPABASE_URL='https://test.supabase.co';process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY='sb_secret_bad';assert.equal(D.designConnection().kind,'invalid');
+ const config={url:'https://test.supabase.co',key:'sb_publishable_test'},id='00000000-0000-4000-8000-000000000001',token='owner-token',calls=[];
+ const oldFetch=global.fetch;global.fetch=async(url,options)=>{calls.push({url,options});if(url.includes('/rpc/'))return new Response('null',{status:200});return new Response(JSON.stringify([{revision:0,draft:D.defaultDesign,staged:D.defaultDesign,history:[]}]),{status:200});};
+ const remote=D.createSupabaseDesignStore(config,token,id);await remote.load();await remote.save(D.defaultDesign,0);assert(calls.every(c=>c.options.headers.Authorization==='Bearer owner-token'));const rpc=calls.find(c=>c.url.includes('/rpc/'));assert.equal(JSON.parse(rpc.options.body).p_tenant,id);
+ global.fetch=async()=>new Response('{}',{status:403});await assert.rejects(()=>remote.load());await assert.rejects(()=>remote.imageUrl({kind:'stored',path:'00000000-0000-4000-8000-000000000002/x.webp'}));global.fetch=oldFetch;
+ if(originalUrl===undefined)delete process.env.NEXT_PUBLIC_SUPABASE_URL;else process.env.NEXT_PUBLIC_SUPABASE_URL=originalUrl;if(originalKey===undefined)delete process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;else process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY=originalKey;
+ fs.writeFileSync(path.join(root,'supabase/default-design.json'),JSON.stringify(D.defaultDesign,null,2)+'\n');
+ console.log('PASS: schema/enums/URLs, contrast, tenant isolation, draft vs staged state, version restore/retention, conflicts/quota rollback, image signatures, safe public-key config and authenticated Supabase request boundaries.');
+})().catch(e=>{console.error(e);process.exit(1)});

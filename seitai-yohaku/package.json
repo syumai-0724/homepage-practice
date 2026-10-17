@@ -7,7 +7,9 @@
     "build": "next build --webpack",
     "typecheck": "tsc --noEmit",
     "preview:html": "node scripts/make-preview.cjs",
-    "test:booking": "node tests/booking.test.cjs"
+    "test:booking": "node tests/booking.test.cjs",
+    "test:design": "node tests/design.test.cjs",
+    "test:design-rls": "node tests/design-rls.test.cjs"
   },
   "dependencies": {
     "next": "16.4.2",
@@ -15,6 +17,7 @@
     "react-dom": "19.3.1"
   },
   "devDependencies": {
+    "@electric-sql/pglite": "0.5.10",
     "@tailwindcss/postcss": "4.3.3",
     "@types/node": "26.6.5",
     "@types/react": "19.3.0",

@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "theme": {
+    "main": "#282A2C",
+    "background": "#F7F5F1",
+    "text": "#282A2C",
+    "accent": "#B39A75",
+    "font": "classic",
+    "button": "square",
+    "spacing": "standard"
+  },
+  "layout": {
+    "template": "calm",
+    "imagePosition": "right",
+    "columns": "auto",
+    "cards": "soft"
+  },
+  "hero": {
+    "headline": "整えることを、\n日常に。",
+    "subcopy": "仕事帰りにも、休日にも。\n自分のからだと向き合う、心地よい時間を。",
+    "bookingLabel": "WEB予約デモへ",
+    "image": {
+      "kind": "default"
+    },
+    "alt": "柔らかな自然光が差し込む、木とアイボリーを基調とした施術室のイメージ"
+  },
+  "sections": [
+    {
+      "id": "news",
+      "visible": true,
+      "heading": "お知らせ",
+      "description": "整体室 余白のデザインプレビューを制作しました。"
+    },
+    {
+      "id": "about",
+      "visible": true,
+      "heading": "からだを整える。\n毎日に、余白がうまれる。",
+      "description": "気づけば、ずっと同じ姿勢。\n休みの日も、なんとなく忙しい。\n\nそんな日々の中で、自分のための時間を少しだけ。\n余白は、気軽に立ち寄り、からだと向き合う場所を目指す\n整体室のデザインサンプルです。"
+    },
+    {
+      "id": "menu",
+      "visible": true,
+      "heading": "今日の自分に、ちょうどいいケア。",
+      "description": "時間とご希望に合わせて、3つのコース。\n料金はすべて税込のサンプル金額です。"
+    },
+    {
+      "id": "first-visit",
+      "visible": true,
+      "heading": "はじめての日も、\nいつもの自分で。",
+      "description": "難しい準備は、いりません。\nご予約からお帰りまでの流れをご紹介します。"
+    },
+    {
+      "id": "staff",
+      "visible": true,
+      "heading": "話しやすさも、心地よさのひとつ。",
+      "description": "小さなことも、気兼ねなく。\nお一人おひとりとの会話を大切にする想定です。"
+    },
+    {
+      "id": "faq",
+      "visible": true,
+      "heading": "気になることを、\n来る前に。",
+      "description": "初めての方からよくいただくご質問を\n想定してまとめました。"
+    },
+    {
+      "id": "access",
+      "visible": true,
+      "heading": "あなたの日常の、すぐそばに。",
+      "description": "仕事帰りにも、休日にも。\n通いやすい場所を、これから。"
+    },
+    {
+      "id": "reservation",
+      "visible": true,
+      "heading": "自分のための時間を、\nひとつ。",
+      "description": "忙しい毎日に、ほっとできるひとときを。"
+    }
+  ]
+}
