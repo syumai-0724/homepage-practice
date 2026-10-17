@@ -6,7 +6,8 @@
     "dev": "next dev --hostname 0.0.0.0",
     "build": "next build --webpack",
     "typecheck": "tsc --noEmit",
-    "preview:html": "node scripts/make-preview.cjs"
+    "preview:html": "node scripts/make-preview.cjs",
+    "test:booking": "node tests/booking.test.cjs"
   },
   "dependencies": {
     "next": "16.4.2",
