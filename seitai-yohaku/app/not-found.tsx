@@ -1,0 +1,1 @@
+export default function NotFound() {return <main className="shell section"><p className="eyebrow">404</p><h1>ページが見つかりません。</h1><p>現在はトップページのデザイン確認段階です。</p><a className="button" href="/">トップページへ戻る</a></main>}
